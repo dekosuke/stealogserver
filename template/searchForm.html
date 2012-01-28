@@ -1,0 +1,46 @@
+<html lang="ja">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+<title>stealog 食べログ再評価エンジン</title>
+<style type="text/css">
+
+.stealog {
+background-color: pink;
+}
+
+</style>
+</head>
+<body>
+<h1>stealog 食べログ再評価エンジン</h1>
+
+<form>
+<input type="hidden" name="subm" value="true"/>
+<input type="text" class="searchurl" name="searchurl"/>
+<input type="submit" value="検索する"/>
+</form>
+<br><br>
+
+{% if score %}
+<div class="stealog">
+<h3>全体評価：<b>{{score}}</b>点</h3>
+<table>
+  <tr>
+  <td><b>ユーザ評価</b></td> 
+  <td>ユーザ名</td> 
+  <td>信頼度(authority)</td> 
+  </tr>
+  {% for review in reviews %}
+  <tr>
+  <td><b>{{review.score}}</b>点</td> 
+  <td>{{review.user.name}}</td> 
+  <td>{{review.user.authority}}</td> 
+  </tr>
+  {% endfor %}
+</table>
+</div>
+{% endif %}
+<br><br>
+検索するURLの例：http://r.tabelog.com/tokyo/A1302/A130204/13018162/
+</body>
+</html>
