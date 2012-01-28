@@ -29,7 +29,6 @@ def requires_auth(f):
     return f(*args, **kwargs)
   return decorated
 
-#伝票入力ページ
 @app.route('/', methods=['GET', 'POST'])
 @requires_auth
 def input():
