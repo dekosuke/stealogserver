@@ -37,7 +37,6 @@ class Review(db.Model):
   score = db.Column(db.Float, unique=False)
   user_id = db.Column(db.Integer, db.ForeignKey("User.id"))
   restaurant_id = db.Column(db.Integer, db.ForeignKey("Restaurant.id"))
-#lines = db.relationship("ReceiptLine", backref=db.backref('receipt'))
   user = db.relationship("User")
   restaurant = db.relationship("Restaurant")
   def __init__(self, user, restaurant, score):
